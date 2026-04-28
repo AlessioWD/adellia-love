@@ -3,184 +3,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adellia Putri Fernanda - Cintaku ❤️</title>
+    <title>Untuk Adellia</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        
+        body{
+            min-height:100vh;
+            font-family:'Inter',sans-serif;
+            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+            display:grid;
+            place-items:center;
+            overflow:hidden;
+            color:#fff;
+            position:relative;
         }
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(-45deg, #ff6b9d, #c44569, #f18f01, #ff9f43);
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
-            overflow: hidden;
-            position: relative;
+        body::before{
+            content:'';
+            position:absolute;
+            inset:0;
+            background:radial-gradient(circle at 30% 70%,rgba(255,255,255,.15) 0%,transparent 40%),
+                        radial-gradient(circle at 70% 30%,rgba(255,255,255,.1) 0%,transparent 40%);
+            animation:floatBG 20s ease-in-out infinite;
         }
         
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes floatBG{
+            0%,100%{transform:scale(1) translate(0,0)}
+            33%{transform:scale(1.1) translate(20px,-20px)}
+            66%{transform:scale(1.1) translate(-15px,15px)}
         }
         
-        .container {
-            text-align: center;
-            color: white;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
+        .container{
+            text-align:center;
+            max-width:550px;
+            padding:3rem 2rem;
+            position:relative;
+            z-index:10;
         }
         
-        .name {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #ffd1dc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 2s ease-in-out infinite alternate;
-            text-shadow: 0 0 20px rgba(255,255,255,0.8);
+        .letter{
+            background:rgba(255,255,255,.1);
+            backdrop-filter:blur(20px);
+            border-radius:24px;
+            padding:3rem 2.5rem;
+            border:1px solid rgba(255,255,255,.2);
+            box-shadow:0 25px 50px rgba(0,0,0,.15);
+            transition:all .6s cubic-bezier(0.4,0,0.2,1);
         }
         
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 10px #fff); }
-            to { filter: drop-shadow(0 0 30px #ffd1dc); }
+        .name{
+            font-family:'Playfair Display',serif;
+            font-size:clamp(2.8rem,9vw,4.8rem);
+            font-weight:700;
+            margin-bottom:1rem;
+            background:linear-gradient(135deg,#fff,rgba(255,255,255,.9));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            background-clip:text;
+            letter-spacing:-.03em;
         }
         
-        .love-text {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            animation: fadeInUp 2s ease;
-            line-height: 1.4;
+        .date{
+            font-size:.95rem;
+            opacity:.8;
+            font-weight:400;
+            margin-bottom:2.5rem;
+            letter-spacing:.05em;
         }
         
-        .big-heart {
-            font-size: 8rem;
-            animation: heartbeat 1.5s ease-in-out infinite;
-            display: block;
-            margin: 20px 0;
+        .message{
+            font-size:clamp(1.1rem,3.2vw,1.35rem);
+            line-height:1.75;
+            margin-bottom:3rem;
+            font-weight:300;
+            opacity:.98;
         }
         
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+        .highlight{
+            font-family:'Playfair Display',serif;
+            font-weight:600;
+            color:#fff;
         }
         
-        .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            margin-top: 20px;
-            animation: fadeInUp 2s ease 0.5s both;
+        .reveal-btn{
+            background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.1));
+            backdrop-filter:blur(15px);
+            border:2px solid rgba(255,255,255,.3);
+            border-radius:16px;
+            padding:1.2rem 3rem;
+            color:#fff;
+            font-size:1.15rem;
+            font-weight:500;
+            cursor:pointer;
+            transition:all .4s cubic-bezier(0.4,0,0.2,1);
+            letter-spacing:.03em;
+            position:relative;
+            overflow:hidden;
         }
         
-        .hearts-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
+        .reveal-btn:hover{
+            transform:translateY(-4px);
+            box-shadow:0 20px 40px rgba(0,0,0,.25);
+            border-color:rgba(255,255,255,.6);
         }
         
-        .heart-float {
-            position: absolute;
-            color: rgba(255,255,255,0.9);
-            font-size: 1.8rem;
-            animation: float 8s linear infinite;
+        /* Photo Modal */
+        .photo-modal{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.97);
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            opacity:0;
+            visibility:hidden;
+            transition:all .7s cubic-bezier(0.4,0,0.2,1);
+            z-index:1000;
+            padding:2rem;
         }
         
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg) scale(0);
-                opacity: 1;
+        .photo-modal.active{
+            opacity:1;
+            visibility:visible;
+        }
+        
+        .photo{
+            max-width:95vw;
+            max-height:75vh;
+            width:auto;
+            height:auto;
+            border-radius:24px;
+            box-shadow:0 50px 120px rgba(0,0,0,.8);
+            animation:photoReveal 1.2s cubic-bezier(0.4,0,0.2,1);
+            margin-bottom:2.5rem;
+            border:3px solid rgba(255,255,255,.2);
+        }
+        
+        @keyframes photoReveal{
+            from{
+                opacity:0;
+                transform:scale(0.6) translateY(60px);
             }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(720deg) scale(1);
-                opacity: 0;
+            to{
+                opacity:1;
+                transform:scale(1) translateY(0);
             }
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .photo-caption{
+            font-size:clamp(1.15rem,4.5vw,1.45rem);
+            font-weight:400;
+            max-width:500px;
+            line-height:1.65;
+            text-align:center;
+            font-family:'Playfair Display',serif;
         }
         
-        @media (max-width: 768px) {
-            .name { font-size: 3rem; }
-            .love-text { font-size: 1.4rem; }
-            .big-heart { font-size: 6rem; }
+        .close-btn{
+            position:absolute;
+            top:2.5rem;
+            right:2.5rem;
+            width:55px;
+            height:55px;
+            border-radius:50%;
+            background:rgba(255,255,255,.25);
+            border:2px solid rgba(255,255,255,.4);
+            color:#fff;
+            font-size:1.8rem;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            transition:all .3s ease;
+            font-weight:300;
+        }
+        
+        .close-btn:hover{
+            background:rgba(255,255,255,.4);
+            transform:scale(1.15) rotate(90deg);
+        }
+        
+        /* Hearts */
+        .hearts{position:absolute;inset:0;pointer-events:none;z-index:1}
+        .heart-float{
+            position:absolute;
+            opacity:.35;
+            font-size:.85rem;
+            animation:float 16s linear infinite;
+        }
+        
+        @keyframes float{
+            0%{transform:translateY(100vh) scale(.5);opacity:0}
+            12%{opacity:.35}
+            88%{opacity:.35}
+            100%{transform:translateY(-100px) scale(1);opacity:0}
+        }
+        
+        @media (max-width:600px){
+            .letter{padding:2.5rem 2rem}
+            .container{padding:2rem 1.5rem}
         }
     </style>
 </head>
 <body>
-    <div class="hearts-bg" id="hearts"></div>
+    <div class="hearts" id="hearts"></div>
     
     <div class="container">
-        <h1 class="name">Adellia Putri Fernanda</h1>
-        <div class="big-heart">💖</div>
-        <div class="love-text">
-            Kamu adalah <strong>cahaya</strong> dalam hidupku,<br>
-            <strong>Senyummu</strong> membuat dunia lebih indah,<br>
-            <strong>Cintaku</strong> untukmu tak pernah berakhir! 💕
+        <div class="letter">
+            <h1 class="name">Adellia Putri Fernanda</h1>
+            <div class="date">Surat cinta, hari ini</div>
+            
+            <p class="message">
+                Ada momen-momen kecil yang terukir dalam ingatanku.<br><br>
+                
+                Senyummu saat cerita tentang hari itu.<br>
+                Tatapanmu yang selalu <span class="highlight">menenangkan</span>.<br>
+                Dan pelukanmu yang terasa seperti <span class="highlight">rumah</span>.
+            </p>
+            
+            <button class="reveal-btn" id="revealBtn">
+                Lihat kenangan kita
+            </button>
         </div>
-        <div class="subtitle">
-            Dibuat khusus untuk Adellia oleh orang yang paling sayang ✨<br>
-            Klik mana saja untuk hati ajaib!
-        </div>
+    </div>
+    
+    <!-- PHOTO MODAL dengan FOTO dari GOOGLE DRIVE -->
+    <div class="photo-modal" id="photoModal">
+        <button class="close-btn" id="closeBtn">×</button>
+        
+        <!-- FOTO KALIAN DARI GOOGLE DRIVE -->
+        <img src="https://drive.google.com/uc?export=view&id=1gQsAYyT6XXb5t3CFM4ldDGltwXEsOTex" 
+             alt="Adellia & Kamu" class="photo" 
+             loading="lazy">
+        
+        <p class="photo-caption">
+            <strong>Momen ini.</strong><br>
+            Salah satu hari terbaik bersamamu.<br>
+            <em>Senyummu selalu jadi alasan aku tersenyum.</em>
+        </p>
     </div>
 
     <script>
-        const hearts = ['💖', '💕', '💗', '💝', '🌸', '🌺', '✨', '⭐'];
+        const revealBtn = document.getElementById('revealBtn');
+        const photoModal = document.getElementById('photoModal');
+        const closeBtn = document.getElementById('closeBtn');
+        
+        // Open photo
+        revealBtn.addEventListener('click', () => {
+            photoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close photo
+        function closeModal() {
+            photoModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        closeBtn.addEventListener('click', closeModal);
+        photoModal.addEventListener('click', (e) => {
+            if(e.target === photoModal) closeModal();
+        });
+        
+        // ESC key
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape') closeModal();
+        });
+        
+        // Floating hearts
+        const hearts = ['♡','♥','❦','❥'];
+        const heartsContainer = document.getElementById('hearts');
         
         function createHeart() {
             const heart = document.createElement('div');
             heart.className = 'heart-float';
             heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
-            heart.style.fontSize = (Math.random() * 0.8 + 1) + 'rem';
-            document.getElementById('hearts').appendChild(heart);
-            
-            setTimeout(() => heart.remove(), 8000);
+            heart.style.animationDuration = (14 + Math.random() * 6) + 's';
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 20000);
         }
         
-        // Hati terus berjatuhan
-        setInterval(createHeart, 200);
-        
-        // Klik untuk hati spesial
-        document.addEventListener('click', function(e) {
-            for(let i = 0; i < 5; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart-float';
-                    heart.innerHTML = '💖';
-                    heart.style.left = (e.clientX + (i * 20)) + 'px';
-                    heart.style.top = (e.clientY + (i * 20)) + 'px';
-                    heart.style.animationDuration = '2s';
-                    document.body.appendChild(heart);
-                    setTimeout(() => heart.remove(), 2000);
-                }, i * 100);
-            }
-        });
+        setInterval(createHeart, 2800);
+        for(let i = 0; i < 3; i++) setTimeout(createHeart, i * 1500);
     </script>
 </body>
 </html>
