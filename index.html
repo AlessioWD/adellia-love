@@ -1,82 +1,235 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rizwan & Adellia</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Cantikku Adellia</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial; background: linear-gradient(135deg, #ff6b9d, #ff8fab, #ffb6c1); color: white; text-align: center; min-height: 100vh; }
+        .bg-decor { position: fixed; width: 100%; height: 100%; z-index: 0; }
+        .heart-bg { position: absolute; font-size: 3rem; opacity: 0.1; animation: float 3s infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .container { max-width: 500px; margin: 0 auto; padding: 30px 20px; position: relative; z-index: 1; }
+        .card { background: rgba(255,255,255,0.25); padding: 40px 30px; border-radius: 30px; border: 2px solid rgba(255,255,255,0.4); }
+        .avatar { width: 160px; height: 160px; border-radius: 50%; border: 6px solid #fff; object-fit: cover; box-shadow: 0 0 40px rgba(255,107,157,0.6); margin-bottom: 10px; }
+        h1 { font-size: 2.2rem; margin: 15px 0 10px; }
+        p { opacity: 0.9; margin-bottom: 20px; }
+        .btn { background: linear-gradient(135deg, #ff6b9d, #ff8fab); color: white; border: none; padding: 15px 45px; font-size: 18px; border-radius: 50px; cursor: pointer; font-weight: 700; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255,107,157,0.95), rgba(219,112,147,0.95)); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; padding: 30px; border-radius: 25px; max-width: 380px; width: 85%; color: #333; }
+        .modal-content h2 { color: #ff6b9d; margin: 0 0 15px; }
+        .modal-content p { color: #333; font-size: 1.1rem; margin-bottom: 15px; font-weight: 600; }
+        .option-btn { display: block; width: 100%; padding: 12px 15px; margin: 8px 0; background: #ffebef; color: #ff6b9d; border: 2px solid #ff6b9d; border-radius: 12px; cursor: pointer; font-weight: 600; }
+        .option-btn:hover { background: #ff6b9d; color: white; }
+        .progress { font-size: 13px; color: #ff6b9d; margin-top: 15px; }
+        .footer-bg { background: linear-gradient(135deg, #ff9a9e, #fecfef, #ffb6c1); }
+        .photo-frame { width: 180px; height: 180px; border-radius: 50%; border: 6px solid #fff; margin: 0 auto 20px; animation: PUTAR 8s linear infinite; }
+        @keyframes PUTAR { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        .couple-name { font-size: 1.4rem; font-weight: 700; color: white; margin: 10px 0; }
+        .heart-anim { font-size: 2.5rem; animation: heartBeat 1s infinite; }
+        @keyframes heartBeat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+        .gallery-item { position: relative; border-radius: 12px; overflow: hidden; cursor: pointer; }
+        .nomor { position: absolute; top: 6px; left: 6px; background: linear-gradient(135deg, #ff6b9d, #ff8fab); color: white; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 15px; }
+        .gallery-item img { width: 100%; height: 130px; object-fit: cover; transition: transform 0.3s; }
+        .gallery-item:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 10px 25px rgba(255,107,157,0.5); }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .close-btn { position: absolute; top: 15px; right: 15px; width: 40px; height: 40px; border-radius: 50%; background: white; color: #ff6b9d; border: none; font-size: 20px; cursor: pointer; }
+    </style>
 </head>
 <body>
 
-    <!-- BACKGROUND ORBS -->
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+    <div class="bg-decor">
+        <div class="heart-bg" style="top:10%;left:10%">❤️</div>
+        <div class="heart-bg" style="top:25%;right:15%">❤️</div>
+        <div class="heart-bg" style="bottom:25%;left:15%">❤️</div>
+        <div class="heart-bg" style="bottom:10%;right:20%">❤️</div>
+    </div>
 
-    <!-- KONTEN UTAMA -->
     <div class="container">
         <div class="card">
-            <div class="avatar">
-                <img src="images/fotopacar.jpeg" alt="Kita">
-            </div>
-            
-            <h1 class="name">Rizwan & Adellia</h1>
-            <p class="sub-text">
-                Our memories together 💕
-            </p>
-            
-            <button class="btn" onclick="bukaGaleri()">
-                <span>📸</span> Lihat Kenangan
-            </button>
+            <img src="images/fotopacar.jpeg" class="avatar">
+            <h1>Hai Cantik Adellia</h1>
+            <p>Our memories together</p>
+            <button class="btn" onclick="bukaQuiz()">Mulai Quiz</button>
         </div>
     </div>
 
-    <!-- MODAL GALERI -->
-    <div class="modal" id="modalGaleri">
-        <button class="close-btn" onclick="tutupGaleri()">✕</button>
-        
+    <div id="modalQuiz" class="modal">
         <div class="modal-content">
-            <h2>Kenangan Kita</h2>
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- Foto muncul di sini -->
-            </div>
-            
-            <button class="btn btn-secondary" onclick="lihatPacar()">
-                ❤️ See Our Love
-            </button>
+            <h2>Question <span id="noSoal">1</span></h2>
+            <p id="soal"></p>
+            <div id="pilihan"></div>
+            <p class="progress">Pertanyaan <span id="progress">1/5</span></p>
         </div>
     </div>
 
-    <!-- MODAL PESAN (KATA-KATA) -->
-    <div class="modal" id="modalPesan">
-        <button class="close-btn" onclick="tutupPesan()">✕</button>
-        
-        <div class="modal-pesen-content">
-            <div class="quote-icon">✦</div>
-            <p class="quote-text" id="quoteText"></p>
-            <p class="quote-author" id="quoteAuthor"></p>
-            <button class="btn" onclick="tutupPesan()">Tutup</button>
+    <div id="modalSalah" class="modal">
+        <div class="modal-content">
+            <h2 id="txtSalah">Salah!</h2>
+            <p id="msgSalah">Coba lagi ya...</p>
+            <button class="btn" onclick="ulangSoal()">Coba Lagi</button>
         </div>
     </div>
 
-    <!-- FOOTER (FOTO PACAR) -->
-    <div class="special-footer" id="sectionPacar">
-        <button class="close-btn" onclick="kembaliKeUtama()">✕</button>
-        
-        <div class="footer-content">
-            <p class="footer-label">❤️ My Everything</p>
-            
-            <div class="photo-frame">
-                <img src="images/fotopacar.jpeg" alt="Kita" class="couple-photo">
-            </div>
-            
+    <div id="modalPesan" class="modal">
+        <div class="modal-content">
+            <h2 id="txtPesan">Kata-kata</h2>
+            <p id="msgPesan"></p>
+            <button class="btn" onclick="kembaliGaleri()">Lihat Foto Lain</button>
+        </div>
+    </div>
+
+    <div id="modalGaleri" class="modal">
+        <button class="close-btn" onclick="tutupGaleri()">X</button>
+        <div class="modal-content">
+            <h2>Semua Kenangan Kita</h2>
+            <div class="gallery" id="gallery"></div>
+            <button class="btn" onclick="lihatFooter()" style="background:transparent;border:2px solid #ff6b9d;color:#ff6b9d">See Our Love</button>
+        </div>
+    </div>
+
+    <div id="footer" class="modal footer-bg">
+        <button class="close-btn" onclick="tutupFooter()">X</button>
+        <div style="text-align:center;padding:30px">
+            <div class="photo-frame"><img src="images/fotopacar.jpeg"></div>
+            <p>My Everything</p>
             <h2 class="couple-name">Rizwan Alessio Widiansyach</h2>
-            <p class="heart">❤️</p>
+            <p class="heart-anim">❤️</p>
             <h2 class="couple-name">Adellia Putri Fernanda</h2>
-            
-            <p class="footer-subtext">Forever & Always 💕</p>
+            <p>Forever</p>
+            <button class="btn" onclick="bukaGaleri()" style="margin-top:20px;background:white;color:#ff6b9d">Lihat Foto</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        var foto = ['images/foto1.jpeg','images/foto2.jpeg','images/foto3.jpeg','images/foto4.jpeg'];
+        
+        var soal = [
+            {q:"Apa yang kamu rasakan saat pertama kali kita bertemu?",a:"Happy & Deg-degan",salah:["Gak Happy","Biasa aja"]},
+            {q:"Tanggal jadian kita?",a:"20 Juni 2024",salah:["1 Januari 2024","15 Agustus 2024"]},
+            {q:"Makanan yang aku GAK SUKA?",a:"Kentang",salah:["Nasi Padang","Mie Ayam"]},
+            {q:"Dimana kita pertama kali bertemu?",a:"TW Cafe & Eatery",salah:["Mall","Kampus"]},
+            {q:"Di mana kamu menembak aku?",a:"Di jalan mau antar ke kampus",salah:["Di chat WA","Di mall"]}
+        ];
+        
+        var kalimatSalah = [
+            {judul:"Ihh Ayang", pesan:"Sekarang salah coba lagi dong"},
+            {judul:"Jangan Bohong", pesan:"Boongan ya? Coba pikir lagi"},
+            {judul:"Salah Lagi", pesan:"Wkwk salah lagi nih"},
+            {judul:"Ayang", pesan:"alah salah mulu"},
+            {judul:"Hmmm", pesan:"Salah terus nih"},
+            {judul:"Walah", pesan:"Wkwk coba lagi dong"},
+            {judul:"Ih Gaya", pesan:"Gaya mulu tapi salah"},
+            {judul:"Salah", pesan:"Salah mulu ya"},
+            {judul:"Wkwk", pesan:"Wkwk cobaa yang bener"},
+            {judul:"Ga Benar", pesan:"Gaada yang bener"}
+        ];
+        
+        var kataFoto = [
+            {judul:"Kenangan #1", pesan:"Kenangan pertama kita yang paling spesial."},
+            {judul:"Kenangan #2", pesan:"Setiap momen bersamamu seperti keajaiban."},
+            {judul:"Kenangan #3", pesan:"Waktu cepat berlalu, tapi kenangan ini terukir selamanya."},
+            {judul:"Kenangan #4", pesan:"Kau alasan di balik setiap senyumku."}
+        ];
+        
+        var no = 0;
+
+        function acak(arr) {
+            for(var i=arr.length-1; i>0; i--) {
+                var j = Math.floor(Math.random()*(i+1));
+                var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+            }
+            return arr;
+        }
+
+        function bukaQuiz() {
+            no = 0;
+            tampilSoal();
+            document.getElementById('modalQuiz').style.display = 'flex';
+        }
+
+        function tampilSoal() {
+            var s = soal[no];
+            document.getElementById('noSoal').innerText = no + 1;
+            document.getElementById('soal').innerText = s.q;
+            document.getElementById('progress').innerText = (no+1) + "/5";
+            
+            var ops = acak([s.salah[0], s.salah[1], s.a]);
+            var div = document.getElementById('pilihan');
+            div.innerHTML = "";
+            
+            for(var i=0; i<ops.length; i++) {
+                var btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = ops[i];
+                btn.onclick = function(jwb, benar) {
+                    return function() {
+                        if(jwb === benar) {
+                            no++;
+                            if(no >= soal.length) {
+                                document.getElementById('modalQuiz').style.display = 'none';
+                                document.getElementById('footer').style.display = 'flex';
+                            } else {
+                                tampilSoal();
+                            }
+                        } else {
+                            var rnd = Math.floor(Math.random() * kalimatSalah.length);
+                            document.getElementById('txtSalah').innerText = kalimatSalah[rnd].judul;
+                            document.getElementById('msgSalah').innerText = kalimatSalah[rnd].pesan;
+                            document.getElementById('modalQuiz').style.display = 'none';
+                            document.getElementById('modalSalah').style.display = 'flex';
+                        }
+                    };
+                }(ops[i], s.a);
+                div.appendChild(btn);
+            }
+        }
+
+        function ulangSoal() {
+            document.getElementById('modalSalah').style.display = 'none';
+            document.getElementById('modalQuiz').style.display = 'flex';
+        }
+
+        function kembaliGaleri() {
+            document.getElementById('modalPesan').style.display = 'none';
+            document.getElementById('modalGaleri').style.display = 'flex';
+        }
+
+        function lihatFooter() {
+            document.getElementById('modalGaleri').style.display = 'none';
+            document.getElementById('footer').style.display = 'flex';
+        }
+
+        function tutupGaleri() {
+            document.getElementById('modalGaleri').style.display = 'none';
+        }
+
+        function tutupFooter() {
+            document.getElementById('footer').style.display = 'none';
+        }
+
+        function bukaGaleri() {
+            var g = document.getElementById('gallery');
+            g.innerHTML = "";
+            
+            for(var i=0; i<foto.length; i++) {
+                var d = document.createElement('div');
+                d.className = 'gallery-item';
+                d.innerHTML = '<div class="nomor">#'+(i+1)+'</div><img src="'+foto[i]+'">';
+                d.onclick = function(idx) {
+                    return function() {
+                        document.getElementById('txtPesan').innerText = kataFoto[idx].judul;
+                        document.getElementById('msgPesan').innerText = kataFoto[idx].pesan;
+                        document.getElementById('modalGaleri').style.display = 'none';
+                        document.getElementById('modalPesan').style.display = 'flex';
+                    };
+                }(i);
+                g.appendChild(d);
+            }
+            document.getElementById('footer').style.display = 'none';
+            document.getElementById('modalGaleri').style.display = 'flex';
+        }
+    </script>
 </body>
 </html>
